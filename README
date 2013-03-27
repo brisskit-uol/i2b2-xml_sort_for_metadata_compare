@@ -1,0 +1,32 @@
+The two real artifacts from this project are the XSLT style sheets in directory src/main/resources/xslt :
+
+sortOnyxVariables.xsl
+sortRefinedMetadata.xsl
+
+At present they get embedded in a jar file, and have to be extracted.
+
+The main allied java program is XMLSortTest.java, which is a series of unit tests aimed
+at flexing the style sheets. Look particularly at the file config.properties when setting up.
+(All of this can be improved upon if you want to try).
+
+These style sheets are required for a proper semantic compare of metadata coming out of
+Onyx (sortOnyxVariables) or going into i2b2 (sortRefinedMetadata). At present the only
+project that makes use of these is the onyx-procedures project.
+
+Believe me, sorting of elements as achieved here is required if you wish to compare, 
+say, two copies of the RefinedMetadata that go into building an i2b2 ontology.
+A change in ontology is a big thing, and needs to be checked whenever data is loaded.
+Detection of inadvertent minor (or major) change is important: ontologies otherwise
+can fail silently. Each subsequent time you load data, you should compare the ontology
+you use against the previous version, or be absolutely certain no change has occurred. 
+This is more especially so for nominal ontologies derived from a questionnaire,
+where "changed" data can be loaded over time, as different respondents use the questionnaire. 
+
+===> I'll say that again: ONTOLOGIES CAN FAIL SILENTLY. <===
+
+See the allied project compare-xmlfiles, which can undertake a meaningful compare 
+once the metadata has been sorted. All of this is orchestrated by scripts within 
+the onyx-procedures project.
+
+When you start development, ensure you have the Eclipse library variable M2_REPO
+set to point to your local maven repository.

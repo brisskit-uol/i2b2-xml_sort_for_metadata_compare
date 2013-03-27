@@ -5,23 +5,44 @@
     >
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>uk.org.briccs.onyx</groupId>
+    <groupId>org.brisskit.app.utils</groupId>
     <name>Stylesheets for metadata compare. For BRISSkit</name>
-    <version>2.0</version>
+    <version>1.0-RC1</version>
     <!-- Merged changes for trac #94 -->
 
-    <artifactId>metadataStylesheets</artifactId>
+    <artifactId>metadata-sorting-stylesheets</artifactId>
 
     <description>Stylesheets for metadata comparison</description>
-    <url>http://www.briccs.org.uk/</url>
+    <url>https://www.brisskit.le.ac.uk/</url>
     
+    <!--+
+	    | The distributionManagement element is required for deploying an artifact to a remote repository
+	    +-->
+	<distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<name>Brisskit Maven Snapshots</name>
+			<url>scpexe://maven.brisskit.org/var/local/brisskit/sonatype-work/nexus/storage/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus</id>
+			<name>Brisskit Maven Releases</name>
+			<url>scpexe://maven.brisskit.org/var/local/brisskit/sonatype-work/nexus/storage/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
     
     <dependencies> 
-  		<dependency>
+  		<!-- dependency>
    			 <groupId>net.sourceforge.saxon</groupId>
      		 <artifactId>saxonhe</artifactId>
      		 <version>9.2.1.5</version>
-   		 </dependency>
+   		 </dependency -->
+   		 
+   		 <dependency>
+  			<groupId>saxon9b</groupId>
+  			<artifactId>saxon</artifactId>
+  			<version>9.0</version>
+		</dependency>
 
         <!--+
             | JUnit tests.
@@ -99,23 +120,18 @@
     </reporting>
     
     <repositories>
-    <repository>
-      <id>mvn.briccs.org.uk</id>
-      <name>BRICCS Maven Repo</name>
-      <url>http://mvn.briccs.org.uk</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-    
-          <repository>
-        <id>thirdparty-releases</id>
-        <name>JBoss Thirdparty Releases</name>
-        <url>https://repository.jboss.org/nexus/content/repositories/thirdparty-releases</url>
-      </repository>
+    	<repository>
+			<id>nexus</id>
+			<name>Brisskit Maven Repo</name>
+			<url>http://maven.brisskit.org/nexus/content/groups/public</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+      
   </repositories> 
 
 </project>
