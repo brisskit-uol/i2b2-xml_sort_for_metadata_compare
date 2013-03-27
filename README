@@ -28,5 +28,7 @@ See the allied project compare-xmlfiles, which can undertake a meaningful compar
 once the metadata has been sorted. All of this is orchestrated by scripts within 
 the onyx-procedures project.
 
-When you start development, ensure you have the Eclipse library variable M2_REPO
-set to point to your local maven repository.
+DURING DEVELOPMENT:
+
+(1) Ensure you have the Eclipse library variable M2_REPO set to point to your local maven repository.
+(2) Remember to edit the resources/config.properties file
